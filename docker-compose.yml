@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  
+  rpm-web:
+    container_name: rpm-web
+    build:
+      context: .
+      dockerfile: ./RazorPagesMovie.Web/Dockerfile
+    ports:
+      - "5353:80"
+    networks:
+      - rpm
+    restart: always
+
+networks:
+  rpm:
