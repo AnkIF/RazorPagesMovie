@@ -2,6 +2,23 @@ version: "3.9"
 
 services:
   
+  rpm-mssql:
+    container_name: rpm-mssql
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Zaq1Xsw2Cde3"
+    user: root
+    ports:
+      - "1433:1433"
+    volumes:
+      - D:/RiderProjects/RazorPagesMovie/mssql/data:/var/opt/mssql/data
+      - D:/RiderProjects/RazorPagesMovie/mssql/log:/var/opt/mssql/log
+      - D:/RiderProjects/RazorPagesMovie/mssql/secrets:/var/opt/mssql/secrets
+    networks:
+      - rpm
+    restart: always
+  
   rpm-web:
     container_name: rpm-web
     build:
